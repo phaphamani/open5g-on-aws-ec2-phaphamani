@@ -119,11 +119,11 @@ aws ec2 describe-instances \
 
 Record the values — you will need them throughout this guide:
 
-| Hostname | Private IP | Public IP |
-|----------|------------|-----------|
-| k3s-master-1 | 10.0.x.x | 1.2.3.4 |
-| k3s-master-2 | 10.0.x.x | 1.2.3.5 |
-| k3s-master-3 | 10.0.x.x | 1.2.3.6 |
+| Hostname     | Private IP    | Public IP     |
+|------------- |---------------|---------------|
+| k3s-master-1 | 172.31.36.152 | 98.93.127.127 |
+| k3s-master-2 | 172.31.36.49  | 107.22.41.213 |
+| k3s-master-3 | 172.31.34.52  | 52.90.185.202 |
 
 ---
 
@@ -134,7 +134,7 @@ Run the following on **each** of the 3 instances.
 ### 2.1 — SSH into the node
 
 ```sh
-ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@<public-ip>
+ssh -i ~/.ssh/$phaphamani.ppk ubuntu@98.93.127.127
 ```
 
 ### 2.2 — Set the hostname (run separately on each node)
@@ -142,12 +142,15 @@ ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@<public-ip>
 ```sh
 # On k3s-master-1
 sudo hostnamectl set-hostname k3s-master-1
+ubuntu@k3s-master-1:~$
 
-# On k3s-master-2
+# On k3s-master-2 
 sudo hostnamectl set-hostname k3s-master-2
+ubuntu@k3s-master-2:~$
 
 # On k3s-master-3
 sudo hostnamectl set-hostname k3s-master-3
+ubuntu@k3s-master-2:~$
 ```
 
 ### 2.3 — Update packages and set timezone
@@ -163,9 +166,9 @@ Add an entry for each node so they can resolve each other by hostname. Replace t
 
 ```sh
 sudo tee -a /etc/hosts <<EOF
-10.0.1.10  k3s-master-1
-10.0.1.11  k3s-master-2
-10.0.1.12  k3s-master-3
+172.31.36.152 k3s-master-1
+172.31.36.49  k3s-master-2
+172.31.34.52 k3s-master-3
 EOF
 ```
 
