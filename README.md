@@ -153,11 +153,12 @@ kube-system   metrics-server-c8774f4f4-pjtfq            1/1     Running   2 (20m
 ```
 4. AWS Console screenshot showing EC2 instances
 5. Successful test app output: `welcome to my web app!`
-
-> Save screenshots in `screenshots/` folder and embed like:
-> `![Nodes](screenshots/kubectl-nodes.png)`
-
 ---
+![K3S_master_1](K3S_master_1.png)
+![K3S_master_2](K3S_master_2.png)
+![K3_master_3](K3_master_3.png)
+
+![Aws_EC2_instances](Aws_EC2_instances.png)
 
 ## Reflection
 
