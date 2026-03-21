@@ -136,17 +136,23 @@ curl http://34.193.50.252:30080
 
 ## Evidence of Deployment
 
-1. `sudo kubectl get nodes`
+1. `sudo kubectl get nodes -o wide`
 ```bash
-NAME           STATUS   ROLES                AGE   VERSION
-k3s-master-1   Ready    control-plane,etcd   78m   v1.34.5+k3s1
-k3s-master-2   Ready    control-plane,etcd   39m   v1.34.5+k3s1
-k3s-master-3   Ready    control-plane,etcd   63m   v1.34.5+k3s1
+NAME           STATUS   ROLES                AGE    VERSION        INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION    CONTAINER-RUNTIME
+k3s-master-1   Ready    control-plane,etcd   3d7h   v1.34.5+k3s1   172.31.36.152   <none>        Ubuntu 24.04.4 LTS   6.17.0-1009-aws   containerd://2.1.5-k3s1
+k3s-master-2   Ready    control-plane,etcd   3d6h   v1.34.5+k3s1   172.31.36.49    <none>        Ubuntu 24.04.4 LTS   6.17.0-1009-aws   containerd://2.1.5-k3s1
+k3s-master-3   Ready    control-plane,etcd   3d7h   v1.34.5+k3s1   172.31.34.52    <none>        Ubuntu 24.04.4 LTS   6.17.0-1009-aws   containerd://2.1.5-k3s1
 ```
 
 2. `sudo kubectl get pods -A`
-3. AWS Console screenshot showing EC2 instances
-4. Successful test app output: `welcome to my web app!`
+```bash
+NAMESPACE     NAME                                      READY   STATUS    RESTARTS      AGE
+kube-system   coredns-695cbbfcb9-dswlr                  1/1     Running   2 (20m ago)   3d7h
+kube-system   local-path-provisioner-546dfc6456-tndnv   1/1     Running   2 (20m ago)   3d7h
+kube-system   metrics-server-c8774f4f4-pjtfq            1/1     Running   2 (20m ago)   3d7h
+```
+4. AWS Console screenshot showing EC2 instances
+5. Successful test app output: `welcome to my web app!`
 
 > Save screenshots in `screenshots/` folder and embed like:
 > `![Nodes](screenshots/kubectl-nodes.png)`
